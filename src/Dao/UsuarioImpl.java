@@ -23,9 +23,8 @@ public class UsuarioImpl implements IUsuarioDao {
     }
 
     @Override
-    public void guardarUsuario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'guardarUsuario'");
+    public void guardarUsuario(Usuario usuario) {
+        this.usuarios.add(usuario);
     }
 
     @Override

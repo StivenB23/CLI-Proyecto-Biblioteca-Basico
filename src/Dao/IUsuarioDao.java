@@ -10,7 +10,7 @@ public interface IUsuarioDao {
     
     public Usuario buscarUsuarioId(int id);
 
-    public void guardarUsuario();
+    public void guardarUsuario(Usuario usuario);
 
     public void prestarLibroUsuario(int idUsuario, Libro libro);
     

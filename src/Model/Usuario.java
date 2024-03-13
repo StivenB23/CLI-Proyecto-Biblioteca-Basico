@@ -15,15 +15,13 @@ public class Usuario {
     public Usuario() {
         this.id = ++contadorId;
 
-
     }
 
-    public Usuario(String identificador, String nombre, String correo, Queue<Libro> librosPrestados) {
+    public Usuario(String identificador, String nombre, String correo) {
         this.id = ++contadorId;
         this.identificador = identificador;
         this.nombre = nombre;
         this.correo = correo;
-        this.librosPrestados = librosPrestados;
     }
 
     public int getId() {
@@ -64,6 +62,16 @@ public class Usuario {
 
     public void setLibrosPrestados(Queue<Libro> librosPrestados) {
         this.librosPrestados = librosPrestados;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", identificador='" + identificador + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                '}';
     }
 
 }

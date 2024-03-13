@@ -26,7 +26,7 @@ public class App {
                     int opcionUsuario;
                     do {
                         submenuUsuario();
-                        opcionUsuario = seleccionarOpcion(5);
+                        opcionUsuario = seleccionarOpcion(6);
                         moduloUsuario(opcionUsuario);
                     } while (opcionUsuario != 6);
 
@@ -35,7 +35,7 @@ public class App {
                     int opcionLibro;
                     do {
                         submenuLibro();
-                        opcionLibro = seleccionarOpcion(5);
+                        opcionLibro = seleccionarOpcion(4);
                         moduloLibro(opcionLibro);
                     } while (opcionLibro != 4);
                     break;
@@ -58,7 +58,8 @@ public class App {
     }
 
     public static void submenuUsuario() {
-        System.out.println("\u001B[34m" +"***************"+"\u001B[1m"+" Usuario *******************"+ "\u001B[0m");
+        System.out
+                .println("\u001B[34m" + "***************" + "\u001B[1m" + " Usuario *******************" + "\u001B[0m");
         System.out.println("|                                         |");
         System.out.println("|   1. Listar                             |");
         System.out.println("|   2. Buscar                             |");
@@ -72,14 +73,13 @@ public class App {
     }
 
     public static void submenuLibro() {
-        System.out.println("\u001B[34m" +"***************"+"\u001B[1m"+" Libros ********************" + "\u001B[0m");
+        System.out
+                .println("\u001B[34m" + "***************" + "\u001B[1m" + " Libros ********************" + "\u001B[0m");
         System.out.println("|                                         |");
         System.out.println("|   1. Listar                             |");
         System.out.println("|   2. Buscar                             |");
         System.out.println("|   3. Crear                              |");
         System.out.println("|   4. Salir del modulo                   |");
-        // System.out.println("| 4. Prestar libro |");
-        // System.out.println("| 5. Devolver libro |");
         System.out.println("|                                         |");
         System.out.println("*******************************************");
         System.out.println("");
@@ -111,10 +111,23 @@ public class App {
             case 1:
                 List<Usuario> usuarios = usuarioDao.listarsUsuarios();
                 if (usuarios.isEmpty()) {
-                    System.out.println("\u001B[1m"+"\u001B[38;5;202m"+"-> La biblioteca no tiene libros, por favor registre alguno"+"\u001B[0m");
+                    System.out.println("\u001B[1m" + "\u001B[38;5;202m"
+                            + "-> La biblioteca no tiene libros, por favor registre alguno" + "\u001B[0m");
                     return;
                 }
                 System.out.println(usuarios);
+                break;
+            case 3:
+                String identificador, nombre, correo;
+                identificador = entradaDato.nextLine();
+                System.out.println("Ingrese su número de documento");
+                identificador = entradaDato.nextLine();
+                System.out.println("Ingrese su nombre");
+                nombre = entradaDato.nextLine();
+                System.out.println("Ingrese su correo");
+                correo = entradaDato.nextLine();
+                Usuario nuevoUsuario = new Usuario(identificador, nombre, correo);
+                usuarioDao.guardarUsuario(nuevoUsuario);
                 break;
 
             default:
@@ -127,7 +140,8 @@ public class App {
             case 1:
                 Stack<Libro> libros = libroDao.listarLibros();
                 if (libros.empty()) {
-                    System.out.println("\u001B[1m"+"\u001B[38;5;202m"+"-> La biblioteca no tiene libros, por favor registre alguno"+"\u001B[0m");
+                    System.out.println("\u001B[1m" + "\u001B[38;5;202m"
+                            + "-> La biblioteca no tiene libros, por favor registre alguno" + "\u001B[0m");
                     return;
                 }
                 System.out.println(libros);
@@ -162,6 +176,7 @@ public class App {
                     fechaPublicacion = entradaDato.nextLine();
 
                     Libro nuevoLibro = new Libro(titulo, autor, editorial, edicion, fechaPublicacion);
+                    
                     libroDao.guardarLibro(nuevoLibro);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
