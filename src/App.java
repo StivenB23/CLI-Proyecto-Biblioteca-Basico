@@ -119,9 +119,21 @@ public class App {
                 break;
             case 3:
                 String identificador, nombre, correo;
-                identificador = entradaDato.nextLine();
+                entradaDato.nextLine();
                 System.out.println("Ingrese su número de documento");
                 identificador = entradaDato.nextLine();
+                System.out.println("Ingrese su nombre");
+                nombre = entradaDato.nextLine();
+                System.out.println("Ingrese su correo");
+                correo = entradaDato.nextLine();
+                Usuario nuevoUsuario = new Usuario(identificador, nombre, correo);
+                usuarioDao.guardarUsuario(nuevoUsuario);
+                break;
+            case 4:
+                String nombreLibro, identificacionUsuario;
+                entradaDato.nextLine();
+                System.out.println("Ingrese el nombre del libro que desea solicitar el prestamo");
+                nombreLibro = entradaDato.nextLine();
                 System.out.println("Ingrese su nombre");
                 nombre = entradaDato.nextLine();
                 System.out.println("Ingrese su correo");
