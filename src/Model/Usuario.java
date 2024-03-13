@@ -4,37 +4,66 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Usuario {
-    private int identificador;
+    private static int contadorId = 0;
+
+    private int id;
+    private String identificador;
     private String nombre;
     private String correo;
     private Queue<Libro> librosPrestados = new LinkedList<>();
 
-    public Usuario(){
-        
+    public Usuario() {
+        this.id = ++contadorId;
+
+
     }
 
-    public int getIdentificador() {
+    public Usuario(String identificador, String nombre, String correo, Queue<Libro> librosPrestados) {
+        this.id = ++contadorId;
+        this.identificador = identificador;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.librosPrestados = librosPrestados;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getIdentificador() {
         return identificador;
     }
-    public void setIdentificador(int identificador) {
+
+    public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getCorreo() {
         return correo;
     }
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
     public Queue<Libro> getLibrosPrestados() {
         return librosPrestados;
     }
+
     public void setLibrosPrestados(Queue<Libro> librosPrestados) {
         this.librosPrestados = librosPrestados;
     }
+
 }

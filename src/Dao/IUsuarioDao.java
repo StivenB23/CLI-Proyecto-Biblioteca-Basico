@@ -1,12 +1,12 @@
 package Dao;
 
-import java.util.Stack;
+import java.util.List;
 
 import Model.Libro;
 import Model.Usuario;
 
 public interface IUsuarioDao {
-    public Stack<Usuario> listarsUsuarios();
+    public List<Usuario> listarsUsuarios();
     
     public Usuario buscarUsuarioId(int id);
 

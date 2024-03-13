@@ -1,16 +1,19 @@
 package Dao;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 import Model.Libro;
 import Model.Usuario;
 
 public class UsuarioImpl implements IUsuarioDao {
 
+
+    private List<Usuario> usuarios = new ArrayList<>();
+
     @Override
-    public Stack<Usuario> listarsUsuarios() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarsUsuarios'");
+    public List<Usuario> listarsUsuarios() {
+        return this.usuarios;
     }
 
     @Override

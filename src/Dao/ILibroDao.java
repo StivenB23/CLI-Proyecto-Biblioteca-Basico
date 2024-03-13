@@ -8,7 +8,9 @@ public interface ILibroDao {
 
     public Libro buscarLibroId(int id);
 
-    public void guardarLibro();
+    public Libro buscarLibroTitulo(String titulo);
+
+    public void guardarLibro(Libro libro);
 
     // Si alcanza el tiempo
     public void actualizarLibr();

@@ -1,17 +1,26 @@
 package Model;
 
 public class Libro {
-
+    private static int contadorId = 0;
     private int id = 0;
     private String titulo;
     private String autor;
     private String editorial;
     private int edicion;
-    private int fechaPublicacion;
-    private boolean estado = true;
+    private String fechaPublicacion;
+    private boolean disponible = true;
 
-    public Libro(){
-
+    public Libro() {
+        this.id = ++contadorId;
+    }
+    
+    public Libro(String titulo, String autor, String editorial, int edicion, String fechaPublicacion) {
+        this.id = ++contadorId;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editorial = editorial;
+        this.edicion = edicion;
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     public int getId() {
@@ -54,21 +63,32 @@ public class Libro {
         this.edicion = edicion;
     }
 
-    public int getFechaPublicacion() {
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public String getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(int fechaPublicacion) {
+    public void setFechaPublicacion(String fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public boolean isEstado() {
-        return estado;
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", editorial='" + editorial + '\'' +
+                ", edicion=" + edicion +
+                ", fechaPublicacion='" + fechaPublicacion + '\'' +
+                ", disponible=" + disponible +
+                '}';
     }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
- 
-    
 }
