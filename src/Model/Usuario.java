@@ -60,8 +60,8 @@ public class Usuario {
         return librosPrestados;
     }
 
-    public void setLibrosPrestados(Queue<Libro> librosPrestados) {
-        this.librosPrestados = librosPrestados;
+    public void addLibrosPrestados(Libro libro){
+        this.librosPrestados.add(libro);
     }
 
     @Override
@@ -70,6 +70,7 @@ public class Usuario {
                 "id=" + id +
                 ", identificador='" + identificador + '\'' +
                 ", nombre='" + nombre + '\'' +
+                ", Libros='" + librosPrestados + '\'' +
                 ", correo='" + correo + '\'' +
                 '}';
     }

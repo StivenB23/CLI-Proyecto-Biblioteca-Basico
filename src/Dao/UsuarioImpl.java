@@ -7,10 +7,18 @@ import Model.Libro;
 import Model.Usuario;
 
 public class UsuarioImpl implements IUsuarioDao {
-
-    private LibroImpl libroImpl = new LibroImpl();
-
+    private static UsuarioImpl instance; 
+    private LibroImpl libroImpl = LibroImpl.getInstance();
     private List<Usuario> usuarios = new ArrayList<>();
+    private UsuarioImpl(){
+        
+    }
+    public static UsuarioImpl getInstance() {
+        if (instance == null) {
+            instance = new UsuarioImpl();
+        }
+        return instance;
+    }
 
     @Override
     public List<Usuario> listarsUsuarios() {
@@ -24,8 +32,9 @@ public class UsuarioImpl implements IUsuarioDao {
     }
 
     @Override
-    public Usuario buscarUsuarioIdentificacion(int id) {
-        
+    public Usuario buscarUsuarioIdentificacion(String identificacion) {
+         Usuario us = new Usuario();
+         return us;
     }
 
     @Override
@@ -40,9 +49,15 @@ public class UsuarioImpl implements IUsuarioDao {
     }
 
     @Override
-    public void prestarLibroUsuario(String identificacionUsuario, String nombreLibro) {
-        Libro libro = libroImpl.buscarLibroTitulo(nombreLibro);
-        Usuario usuario = buscarUsuarioId(Integer.parseInt(identificacionUsuario));
+    public void prestarLibroUsuario(String identificacionUsuario, int idLibro) {
+        Libro libro = libroImpl.buscarLibroId(idLibro);
+        // Usuario usuarioPrestamo = buscarUsuarioIdentificacion(identificacionUsuario);
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdentificador().equals(identificacionUsuario)) {
+                usuario.addLibrosPrestados(libro);
+                break;
+            }
+        }
     }
 
 }

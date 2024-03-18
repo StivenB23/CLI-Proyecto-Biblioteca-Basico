@@ -9,9 +9,12 @@ public interface IUsuarioDao {
     
     public Usuario buscarUsuarioId(int id);
 
+    Usuario buscarUsuarioIdentificacion(String identificacion);
+
     public void guardarUsuario(Usuario usuario);
 
-    public void prestarLibroUsuario(String identificacionUsuario, String nombreLibro);
+    public void prestarLibroUsuario(String identificacionUsuario, int idLibro);
     
     public void devolverLibroUsuario(int idLibro);
+
 }

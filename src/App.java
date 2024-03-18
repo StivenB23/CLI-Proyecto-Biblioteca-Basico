@@ -10,8 +10,8 @@ import Model.Usuario;
 
 public class App {
     static Scanner entradaDato = new Scanner(System.in);
-    private static UsuarioImpl usuarioDao = new UsuarioImpl();
-    private static LibroImpl libroDao = new LibroImpl();
+    private static UsuarioImpl usuarioDao = UsuarioImpl.getInstance();
+    private static LibroImpl libroDao = LibroImpl.getInstance();
 
     public static void main(String[] args) throws Exception {
         int opcion;
@@ -44,7 +44,7 @@ public class App {
                     break;
             }
         } while (opcion != 3);
-        System.out.println("Gracias por usar este apliativo, vuelve pronto.");
+        System.out.println("Gracias por usar este aplicativo, vuelve pronto.");
     }
 
     public static void mostrarModulos() {
@@ -112,7 +112,7 @@ public class App {
                 List<Usuario> usuarios = usuarioDao.listarsUsuarios();
                 if (usuarios.isEmpty()) {
                     System.out.println("\u001B[1m" + "\u001B[38;5;202m"
-                            + "-> La biblioteca no tiene libros, por favor registre alguno" + "\u001B[0m");
+                            + "-> No hay usuarios en el sistema, por favor registre alguno" + "\u001B[0m");
                     return;
                 }
                 System.out.println(usuarios);
@@ -130,16 +130,16 @@ public class App {
                 usuarioDao.guardarUsuario(nuevoUsuario);
                 break;
             case 4:
-                String nombreLibro, identificacionUsuario;
+                String  identificacionUsuario;
+                int numeroLibro;                
                 entradaDato.nextLine();
-                System.out.println("Ingrese el nombre del libro que desea solicitar el prestamo");
-                nombreLibro = entradaDato.nextLine();
-                System.out.println("Ingrese su nombre");
-                nombre = entradaDato.nextLine();
-                System.out.println("Ingrese su correo");
-                correo = entradaDato.nextLine();
-                Usuario nuevoUsuario = new Usuario(identificador, nombre, correo);
-                usuarioDao.guardarUsuario(nuevoUsuario);
+                System.out.println("Ingrese su número de documento");
+                identificacionUsuario = entradaDato.nextLine();
+                libroDao.imprimirLibros();
+                System.out.println("Ingrese el número del libro que desea solicitar el prestamo");
+                numeroLibro = entradaDato.nextInt();
+                
+                usuarioDao.prestarLibroUsuario(identificacionUsuario, numeroLibro);
                 break;
 
             default:

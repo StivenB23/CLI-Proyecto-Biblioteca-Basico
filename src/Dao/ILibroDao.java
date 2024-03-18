@@ -14,4 +14,7 @@ public interface ILibroDao {
 
     // Si alcanza el tiempo
     public void actualizarLibr();
+
+    public void imprimirLibros();
+
 }
