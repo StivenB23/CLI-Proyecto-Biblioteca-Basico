@@ -31,7 +31,7 @@ public class LibroImpl implements ILibroDao {
 
     @Override
     public Libro buscarLibroId(int id) {
-        Libro libroEncontrado = new Libro();
+        Libro libroEncontrado = null;
         System.out.println(this.libros);
         for (Libro libro : this.libros) {
             if (libro.getId() == id) {

@@ -117,29 +117,49 @@ public class App {
                 }
                 System.out.println(usuarios);
                 break;
+            case 2:
+                    try {
+                        entradaDato.nextLine();
+                        String identificacionUsuario = "";
+                        System.out.println("Ingrese el número de identificación a buscar");
+                        identificacionUsuario = entradaDato.nextLine();
+                        usuarioDao.buscarUsuarioIdentificacion(identificacionUsuario);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                break;
             case 3:
                 String identificador, nombre, correo;
                 entradaDato.nextLine();
-                System.out.println("Ingrese su número de documento");
+                System.out.println("Ingrese el número de documento dle usuario");
                 identificador = entradaDato.nextLine();
-                System.out.println("Ingrese su nombre");
+                System.out.println("Ingrese el nombre del usuario");
                 nombre = entradaDato.nextLine();
-                System.out.println("Ingrese su correo");
+                System.out.println("Ingrese el correo del usuario");
                 correo = entradaDato.nextLine();
                 Usuario nuevoUsuario = new Usuario(identificador, nombre, correo);
                 usuarioDao.guardarUsuario(nuevoUsuario);
                 break;
             case 4:
-                String  identificacionUsuario;
+                String  identificacionUsuario = "";
                 int numeroLibro;                
                 entradaDato.nextLine();
-                System.out.println("Ingrese su número de documento");
+                System.out.println("Ingrese el número de documento del usuario");
                 identificacionUsuario = entradaDato.nextLine();
                 libroDao.imprimirLibros();
                 System.out.println("Ingrese el número del libro que desea solicitar el prestamo");
                 numeroLibro = entradaDato.nextInt();
                 
                 usuarioDao.prestarLibroUsuario(identificacionUsuario, numeroLibro);
+                break;
+            case 5:
+                identificacionUsuario = "";
+                numeroLibro = 0;                
+                entradaDato.nextLine();
+                System.out.println("Se devolvera el primer libro prestado");
+                System.out.println("Ingrese el número de documento del usuario");
+                identificacionUsuario = entradaDato.nextLine();
+                usuarioDao.devolverLibroUsuario(identificacionUsuario, numeroLibro);
                 break;
 
             default:

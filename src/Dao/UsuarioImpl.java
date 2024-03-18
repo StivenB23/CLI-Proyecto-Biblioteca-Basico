@@ -2,17 +2,20 @@ package Dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import Model.Libro;
 import Model.Usuario;
 
 public class UsuarioImpl implements IUsuarioDao {
-    private static UsuarioImpl instance; 
+    private static UsuarioImpl instance;
     private LibroImpl libroImpl = LibroImpl.getInstance();
     private List<Usuario> usuarios = new ArrayList<>();
-    private UsuarioImpl(){
-        
+
+    private UsuarioImpl() {
+
     }
+
     public static UsuarioImpl getInstance() {
         if (instance == null) {
             instance = new UsuarioImpl();
@@ -33,8 +36,18 @@ public class UsuarioImpl implements IUsuarioDao {
 
     @Override
     public Usuario buscarUsuarioIdentificacion(String identificacion) {
-         Usuario us = new Usuario();
-         return us;
+        Usuario usuarioEncontrado = null;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdentificador().equals(identificacion)) {
+                usuarioEncontrado = usuario;
+                break;
+            }
+        }
+        if (usuarioEncontrado == null) {
+            throw new NoSuchElementException("\u001B[1m" + "\u001B[38;5;202m"
+            + "Usuario no encontrado con el número de documento: " + identificacion + "\u001B[0m");
+        }
+        return usuarioEncontrado;
     }
 
     @Override
@@ -43,9 +56,13 @@ public class UsuarioImpl implements IUsuarioDao {
     }
 
     @Override
-    public void devolverLibroUsuario(int idLibro) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'devolverLibroUsuario'");
+    public void devolverLibroUsuario(String identificadorUsuario, int idLibro) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdentificador().equals(identificadorUsuario)) {
+                usuario.setLibrosPrestados(usuario.devolverLibro());
+                break;
+            }
+        }
     }
 
     @Override

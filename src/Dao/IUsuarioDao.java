@@ -15,6 +15,6 @@ public interface IUsuarioDao {
 
     public void prestarLibroUsuario(String identificacionUsuario, int idLibro);
     
-    public void devolverLibroUsuario(int idLibro);
+    public void devolverLibroUsuario(String identificacionUsuario, int idLibro);
 
 }
