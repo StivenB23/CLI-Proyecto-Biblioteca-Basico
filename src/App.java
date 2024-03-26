@@ -118,15 +118,15 @@ public class App {
                 System.out.println(usuarios);
                 break;
             case 2:
-                    try {
-                        entradaDato.nextLine();
-                        String identificacionUsuario = "";
-                        System.out.println("Ingrese el número de identificación a buscar");
-                        identificacionUsuario = entradaDato.nextLine();
-                        usuarioDao.buscarUsuarioIdentificacion(identificacionUsuario);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
+                try {
+                    entradaDato.nextLine();
+                    String identificacionUsuario = "";
+                    System.out.println("Ingrese el número de identificación a buscar");
+                    identificacionUsuario = entradaDato.nextLine();
+                    usuarioDao.buscarUsuarioIdentificacion(identificacionUsuario);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case 3:
                 String identificador, nombre, correo;
@@ -141,25 +141,33 @@ public class App {
                 usuarioDao.guardarUsuario(nuevoUsuario);
                 break;
             case 4:
-                String  identificacionUsuario = "";
-                int numeroLibro;                
-                entradaDato.nextLine();
-                System.out.println("Ingrese el número de documento del usuario");
-                identificacionUsuario = entradaDato.nextLine();
-                libroDao.imprimirLibros();
-                System.out.println("Ingrese el número del libro que desea solicitar el prestamo");
-                numeroLibro = entradaDato.nextInt();
-                
-                usuarioDao.prestarLibroUsuario(identificacionUsuario, numeroLibro);
+                try {
+                    String identificacionUsuario = "";
+                    int numeroLibro;
+                    entradaDato.nextLine();
+                    System.out.println("Ingrese el número de documento del usuario");
+                    identificacionUsuario = entradaDato.nextLine();
+                    libroDao.imprimirLibros();
+                    System.out.println("Ingrese el número del libro que desea solicitar el prestamo");
+                    numeroLibro = entradaDato.nextInt();
+
+                    usuarioDao.prestarLibroUsuario(identificacionUsuario, numeroLibro);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case 5:
-                identificacionUsuario = "";
-                numeroLibro = 0;                
-                entradaDato.nextLine();
-                System.out.println("Se devolvera el primer libro prestado");
-                System.out.println("Ingrese el número de documento del usuario");
-                identificacionUsuario = entradaDato.nextLine();
-                usuarioDao.devolverLibroUsuario(identificacionUsuario, numeroLibro);
+                try {
+                    String identificacionUsuario = "";
+                    int numeroLibro = 0;
+                    entradaDato.nextLine();
+                    System.out.println("Se devolvera el primer libro prestado");
+                    System.out.println("Ingrese el número de documento del usuario");
+                    identificacionUsuario = entradaDato.nextLine();
+                    usuarioDao.devolverLibroUsuario(identificacionUsuario, numeroLibro);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
 
             default:
@@ -208,7 +216,7 @@ public class App {
                     fechaPublicacion = entradaDato.nextLine();
 
                     Libro nuevoLibro = new Libro(titulo, autor, editorial, edicion, fechaPublicacion);
-                    
+
                     libroDao.guardarLibro(nuevoLibro);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
