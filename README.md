@@ -1,18 +1,11 @@
-## Getting Started
+## Proyecto Biblioteca (CLI)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Se trata de un proyecto básico de biblioteca desarrollado como una Interfaz de Línea de Comandos (CLI), que gestiona usuarios y libros para realizar préstamos.
 
-## Folder Structure
+La biblioteca CLI ofrece una interfaz intuitiva para administrar tanto los usuarios como los libros disponibles en la biblioteca. Los usuarios pueden realizar diversas acciones, como registrar nuevos usuarios, agregar libros al inventario, buscar libros por título o autor, y realizar préstamos de libros.
 
-The workspace contains two folders by default, where:
+Este proyecto es útil para la gestión eficiente de una biblioteca pequeña o mediana, proporcionando una manera fácil de llevar un registro de los libros disponibles, así como de los usuarios y sus préstamos. Además, al estar implementado como una CLI, permite una interacción rápida y directa con el sistema, lo que lo hace ideal para usuarios que prefieren la línea de comandos.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+![](./menu.png)
+![](./imageError.png)
+![](./menuUsuario.png)
