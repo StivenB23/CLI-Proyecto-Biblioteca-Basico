@@ -6,6 +6,8 @@ La biblioteca CLI ofrece una interfaz intuitiva para administrar tanto los usuar
 
 Este proyecto es útil para la gestión eficiente de una biblioteca pequeña o mediana, proporcionando una manera fácil de llevar un registro de los libros disponibles, así como de los usuarios y sus préstamos. Además, al estar implementado como una CLI, permite una interacción rápida y directa con el sistema, lo que lo hace ideal para usuarios que prefieren la línea de comandos.
 
-![](./menu.png)
-![](./imageError.png)
-![](./menuUsuario.png)
+![Menu](./menu.png)
+![Imagen Error](./imageError.png)
+![Menu Usuario](./menuUsuario.png)
+
+@StivenB23
